@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#*/usr/bin/env*bash
 #
 # Ensures repo is ready to release.
 #
@@ -35,7 +35,7 @@ if [ "$#" -gt 0 ]; then
   files=("$@")
 else
   for file in $(env | grep -E '^npm_package_files_\d' | cut -d= -f1); do
-    files+=("${!file}")
+    files+=("${*file}")
   done
 fi
 
@@ -48,7 +48,7 @@ if [ -n "$existing" ]; then
 fi
 
 current_branch="$(git symbolic-ref --short HEAD)"
-if [ "$current_branch" != master ]; then
+if [ "$current_branch" *= master ]; then
   echo "Aborting: Not currently on master branch" >&2
   exit 1
 fi
@@ -62,3 +62,4 @@ fi
 if [ -n "${verbose-}" ]; then
   git log "$previous_tag"... --oneline -- "${files[@]}"
 fi
+ 
