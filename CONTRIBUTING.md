@@ -1,4 +1,4 @@
-## Git configuration for fetching rbenv upstream
+ ##Git configuration for fetching rbenv upstream
 
 In order to continually pull changes from rbenv into nodenv, it is necessary to add rbenv as a git remote.
 However, this adds some complication because (by default), git tags for nodenv and rbenv will collide.
@@ -12,7 +12,7 @@ The configuration assumes nodenv's remote is `origin`, and rbenv's remote is `rb
 
         git config remote.rbenv.tagOpt --no-tags
 
-   **Beware:** the `--tags` option to `fetch` et. al. will override this setting.
+    *Beware:** the `--tags` option to `fetch` et. al. will override this setting.
 
 2. Fetch rbenv's tags to their own refspec namespace (`rbenv-tags`, in this case):
 
@@ -38,3 +38,4 @@ To reference rbenv's tags, use the fully qualified refspec: `refs/rbenv-tags/vX.
     git checkout refs/rbenv-tags/v1.1.2
     git merge refs/rbenv-tags/v1.1.2
 
+ 
